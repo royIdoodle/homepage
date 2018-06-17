@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="英俊潇洒你冲哥, 前端开发, royneedyou" />
 	<script type="application/javascript">
+		var isWeixin = false,
+			mask = {};
         function is_weixn(){
             var ua = navigator.userAgent.toLowerCase();
             if(ua.match(/MicroMessenger/i)=="micromessenger") {
@@ -15,8 +17,22 @@
                 return false;
             }
         }
+        function goWeixin() {
+			if(isWeixin){
+			    location.href = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI3NjM5MjA3NQ==#wechat_redirect';
+			}else{
+                showWeixin();
+			}
+        }
         function load() {
-			console.log(is_weixn());
+            isWeixin = is_weixn();
+            mask = document.getElementById('mask');
+        }
+        function hideWeixin() {
+            mask.className = 'mask'
+        }
+        function showWeixin() {
+			mask.className = 'mask show'
         }
 	</script>
 	<link rel="stylesheet" type="text/css" href="./css/iconfont.css">
@@ -24,15 +40,17 @@
 		a {
 			text-decoration: none;
 			color: inherit;
+			cursor: pointer;
 		}
 		.main {
 			width: 100%;
 			height: 100vh;
 			display: flex;
-			align-items: center;
-			justify-content: center;
 			display: -moz-flex;
 			display: -ms-flexbox;
+			display: -o-flex;
+			align-items: center;
+			justify-content: center;
 			flex-direction: column;
 		}
 		.main .name {
@@ -64,6 +82,30 @@
 			border-radius: 50%;
 			-moz-border-radius: 50%;
 		}
+		.mask {
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			position: fixed;
+			top: 0;
+			display: none;
+		}
+		.show {
+			display: flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: -webkit-flex;
+			display: -o-flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+		.mask img {
+			width: 90%;
+		}
+		.mask h3 {
+			color: #ffffff;
+		}
 	</style>
 </head>
 <body onload="load()">
@@ -75,9 +117,13 @@
 		</p>
 		<div class="links">
 			<a class="iconfont icon-github" href="https://github.com/royIdoodle"></a>
-			<a class="iconfont icon-weixin"></a>
+			<a class="iconfont icon-weixin" href="#" onclick="goWeixin()"></a>
 			<a class="iconfont icon-zhihu0" style="font-size: 25px;" href="https://www.zhihu.com/people/yingjunxiaosa"></a>
 		</div>
+	</div>
+	<div class="mask" id="mask" onclick="hideWeixin()">
+		<h3>微信搜索“较真的前端”</h3>
+		<img src="./images/banner.png" alt="">
 	</div>
 </body>
 </html>
