@@ -1,0 +1,28 @@
+{
+  "style": "sticky",
+  "image": "",
+  "alignment": "right",
+  "alignmentSticky": "sticky",
+  "title": "",
+  "description": "",
+  "networks": [
+    "wechat",
+    "weibo",
+    "facebook",
+    "twitter"
+  ],
+  "url": "",
+  "language": "en",
+  "labels": "cta",
+  "padding": 12,
+  "radius": "10",
+  "enabled": false,
+  "fontSize": 16,
+  "showTotal": true,
+  "size": 40,
+  "hideDesktop": false,
+  "minCount": 0,
+  "showMobile": true,
+  "showToggle": true,
+  "top": 160
+}
